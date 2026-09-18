@@ -19,22 +19,30 @@
     <h2>Jagat Infrastructure & Algorithm</h2>
     <h3>2<sup>Nd</sup> Summative Evaluation - 2026</h3>
 
+    <label class="input-label">
+      Select Class & Section <br>
+      <span>ক্লাস & সেকশন বেছে নিন</span>
+    </label>
+    <select id="classSectionSelect">
+      <option value="" disabled selected>.......... CLASS_SECTION ..........</option>
+    </select>
+
+    <label class="input-label">
+      Select Student's Name <br>
+      <span>ছাত্র/ছাত্রীর নাম বেছে নিন</span>
+    </label>
+    <select id="studentNameSelect">
+      <option value="" disabled selected>........ STUDENT'S_NAME ........</option>
+    </select>
+
+    <button type="button" id="viewResultBtn">View Result</button>
+
     <div class="loader-wrap" id="loaderWrap">
       <div class="loader"></div>
       <p>Resolving JSON & SQL schema dependencies...</p>
     </div>
 
     <div class="error-box hidden" id="errorBox"></div>
-
-    <select id="classSelect" disabled>
-      <option value="">CLASS_SEC</option>
-    </select>
-
-    <select id="studentSelect" disabled>
-      <option value="">STUDENTS_NAME</option>
-    </select>
-
-    <button id="viewResultBtn" disabled>View Result</button>
   </div>
 
   <div class="result-wrapper hidden" id="resultWrapper">
