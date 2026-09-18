@@ -65,15 +65,33 @@ window.onload = async () => {
     stuSelect.disabled = false;
     viewBtn.disabled = false;
 
+  
+    
+    
     loadClassDropdown();
+
+  
   } catch (err) {
     clearTimeout(timeoutId);
-    console.error('API Error:', err);
+    console.error('Network/API Error:', err);
     loaderWrap.classList.add('hidden');
     errorBox.classList.remove('hidden');
-    errorBox.innerHTML = '<div>Failed to Load Result Data. Please check Google Apps Script permissions (Must be set to "Anyone").</div>';
+
+    // Dynamic error handling based on client network status and exception type
+    if (!navigator.onLine) {
+      errorBox.innerHTML = '<div>⚠️ <b>Network Offline:</b> Connection lost. Please check your internet connection and retry.</div>';
+    } else if (err.name === 'AbortError') {
+      errorBox.innerHTML = '<div>⏱️ <b>Request Timeout:</b> Server response took too long. Please check your network speed.</div>';
+    } else {
+      errorBox.innerHTML = '<div>❌ <b>API Fetch Error:</b> Failed to load result data. Verify Google Apps Script deployment permissions (Must be set to "Anyone").</div>';
+    }
   }
+
 };
+
+
+
+
 
 function loadClassDropdown() {
   const classSelect = document.getElementById('classSelect');
